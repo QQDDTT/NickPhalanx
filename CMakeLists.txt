@@ -5,10 +5,6 @@ project(NickPhalanx)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# 查找必要的库
-find_package(PkgConfig REQUIRED)
-
-
 # 包含头文件目录
 include_directories(${CMAKE_SOURCE_DIR}/include)
 

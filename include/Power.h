@@ -15,6 +15,6 @@ class Power {
         void operator<<(Power power);
     private:
         int power;
-}
+};
 
 #endif // POWER_H

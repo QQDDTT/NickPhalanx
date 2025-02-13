@@ -30,5 +30,4 @@ namespace std {
     };
 }
 
-
 #endif // POSITION_H
