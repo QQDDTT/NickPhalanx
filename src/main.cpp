@@ -2,10 +2,9 @@
 
 #include "View.h"
 #include "Phalanx.h"
-#include "Position.h"
-#include "Cell.h"
-#include "Type.h"
 #include "AliveCell.h"
+#include "Position.h"
+#include "View.h"
 
 
 int main() {

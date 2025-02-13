@@ -3,6 +3,7 @@
 
 #include "Type.h"
 #include "Color.h"
+#include "Power.h"  
 #include <string>
 
 class Cell {
@@ -12,7 +13,7 @@ class Cell {
         int getPower();
         std::string printPower();
     protected:
-        int power;
+        Power power;
         Type type;
 };
 

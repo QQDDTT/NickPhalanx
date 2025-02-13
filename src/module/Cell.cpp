@@ -1,15 +1,15 @@
 #include "Cell.h"
 
-Cell::Cell() : power(0), type(DEF) {}
+Cell::Cell() : power(Power(0)), type(DEF) {}
 
-Cell::Cell(Type type, int power) : power(power), type(type) {}
+Cell::Cell(Type type, int power) : power(Power(0)), type(type) {}
 
 int Cell::getPower() {
-    return power;
+    return power.getPower();
 }
 
 std::string Cell::printPower() {
-    return type << std::to_string(power);
+    return type << power.getStr();
 }
 
 
