@@ -15,8 +15,8 @@ class Type{
 };
 
 
-extern Type DEF;
-extern Type ALIVE;
+extern Type BLACK;
+extern Type WHITE;
 extern Type RED;
 extern Type BLUE;
 

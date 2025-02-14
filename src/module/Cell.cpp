@@ -1,8 +1,13 @@
 #include "Cell.h"
+#include "Type.h"
 
-Cell::Cell() : power(Power(0)), type(DEF) {}
+Cell Cell::DEF() {
+    return Cell(WHITE, 0);
+}
 
-Cell::Cell(Type type, int power) : power(Power(0)), type(type) {}
+Cell::Cell() : power(Power(0)), type(BLACK) {}
+
+Cell::Cell(Type type, int power) : power(Power(power)), type(type) {}
 
 int Cell::getPower() {
     return power.getPower();
@@ -13,4 +18,3 @@ std::string Cell::printPower() {
 }
 
 
-Cell DEF_CELL = Cell();

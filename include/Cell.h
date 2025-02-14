@@ -3,11 +3,13 @@
 
 #include "Type.h"
 #include "Color.h"
-#include "Power.h"  
+#include "Power.h"
+#include "Position.h"  
 #include <string>
 
 class Cell {
     public:
+        static Cell DEF();
         Cell ();
         Cell (Type type, int power);
         int getPower();
@@ -16,7 +18,5 @@ class Cell {
         Power power;
         Type type;
 };
-
-extern Cell DEF_CELL;
 
 #endif // CELL_H

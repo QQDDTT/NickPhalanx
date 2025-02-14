@@ -1,6 +1,7 @@
 #include "AliveCell.h"
 
-AliveCell::AliveCell() : Cell(ALIVE, 1) {
+
+AliveCell::AliveCell() : Cell(WHITE, 1) {
     this->action = 0;
 }
 
@@ -15,3 +16,4 @@ void AliveCell::setAction(int action) {
 int AliveCell::getAction() {
     return this->action;
 }
+
