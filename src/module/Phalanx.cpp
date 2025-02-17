@@ -1,5 +1,4 @@
 #include "Type.h"
-#include "Color.h"
 #include "Position.h"
 #include "Phalanx.h"
 #include "Cell.h"

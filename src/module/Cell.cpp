@@ -13,7 +13,7 @@ int Cell::getPower() {
     return power.getPower();
 }
 
-std::string Cell::printPower() {
+void Cell::printPower() {
     return type << power.getStr();
 }
 

@@ -17,3 +17,11 @@ int AliveCell::getAction() {
     return this->action;
 }
 
+
+void AliveCell::plunder(Cell cell) {
+    this->power >> cell.getPower();
+}
+
+void AliveCell::dedicate(Cell cell) {
+    this->power << cell.getPower();
+}
