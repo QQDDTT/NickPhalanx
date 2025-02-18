@@ -40,3 +40,14 @@ int Phalanx::getMinY() {
 int Phalanx::getMaxY() {
     return max_y;
 }
+
+int Phalanx::getDistance(Position position1, Position position2) {
+    return (position1 - position2).getMod();
+}
+
+void Phalanx::nextStep() {
+    step = step.next();
+    for (const auto& cell : cells) {
+        
+    }
+}

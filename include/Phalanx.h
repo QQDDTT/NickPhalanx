@@ -3,6 +3,7 @@
 
 #include "Cell.h"
 #include "Position.h"
+#include "Step.h"
 #include "AliveCell.h"
 #include "View.h"
 
@@ -20,7 +21,9 @@ class Phalanx {
         int getMinY();
         int getMaxY();
         int getDistance(Position position1, Position position2);
+        void nextStep();
     private:
+        Step step;
         std::unordered_map<Position, Cell> cells;
         int min_x;
         int max_x;

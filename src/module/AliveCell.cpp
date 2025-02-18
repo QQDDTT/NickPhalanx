@@ -9,8 +9,8 @@ AliveCell::AliveCell(Type type, int power) : Cell(type, power) {
     this->action = 0;
 }
 
-void AliveCell::setAction(int action) {
-    this->action = action;
+void AliveCell::resetAction() {
+    this->action = power.getPower();
 }
 
 int AliveCell::getAction() {

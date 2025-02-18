@@ -9,7 +9,7 @@ class AliveCell: public Cell {
     public:
         AliveCell();
         AliveCell(Type type, int power);
-        void setAction(int action);
+        void resetAction();
         int getAction();
 
         void plunder(Cell cell);
