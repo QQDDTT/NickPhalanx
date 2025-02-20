@@ -4,18 +4,19 @@
 #include "Cell.h"
 #include "Position.h"
 
+// 活动单元，能够与周围的单元互动
 
 class AliveCell: public Cell {
     public:
         AliveCell();
         AliveCell(Type type, int power);
+        AliveCell(Cell& cell);
+        virtual ~AliveCell() = default;
         void resetAction();
         int getAction();
-
-        void plunder(Cell cell);
-        void dedicate(Cell cell);
+        void printAction();
     private:
-        int action;
+        int action; // 动作次数
 };
 
 #endif // ALIVE_CELL_H

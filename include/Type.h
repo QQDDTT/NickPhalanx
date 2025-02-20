@@ -3,13 +3,17 @@
 
 #include <string>
 
+// TYPE类，用于表示不同类型的单元，支持跨平台输出不同颜色的文本
+
+// Linux 和 macOS
 #if defined(__linux__) || defined(__APPLE__)
 class Type {
     public:
         Type();
         Type(std::string name, std::string color);
         void operator<<(std::string text);
-    
+        std::string getName();
+        
     private:
         std::string name;
         std::string color;
@@ -24,6 +28,8 @@ const std::string RESET_ = "\033[0m";
 
 #endif
 
+
+// Windows
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 
@@ -33,6 +39,7 @@ class Type {
         Type();
         Type(std::string name, int color);
         void operator<<(std::string text);
+        std::string getName();
         
     private:
         std::string name;

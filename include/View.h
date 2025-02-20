@@ -7,10 +7,14 @@
 
 class Phalanx;
 
+// 视图类，用于输出信息
+
 class View {
     public:
         View();
         void operator<<(Phalanx& phalanx);
+        void operator<<(Cell& cell);
+        void operator<<(Position& position);
 };
 
 extern View view;

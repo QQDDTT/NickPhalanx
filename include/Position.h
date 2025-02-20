@@ -4,6 +4,7 @@
 #include <string>
 #include <functional>
 
+// Position类，用于表示单元在二位空间的位置
 
 class Position {
     public:
@@ -12,7 +13,7 @@ class Position {
         int getX() const;
         int getY() const;
         int getMod();
-        std::string toString();
+        std::string toString() const;
         Position operator+(Position position);
         Position operator-(Position position);
         bool operator==(const Position& position) const;
@@ -20,7 +21,8 @@ class Position {
         int x, y;
 };
 
-// Hash function for Position
+// Hash function for Position，用于std::unordered_map检索
+
 namespace std {
     template<> 
     struct hash<Position> {
