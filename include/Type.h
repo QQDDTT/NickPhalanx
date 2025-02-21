@@ -3,7 +3,7 @@
 
 #include <string>
 
-// TYPE类，用于表示不同类型的单元，支持跨平台输出不同颜色的文本
+// TYPE类，用于表示不同类型的单元
 
 // Linux 和 macOS
 #if defined(__linux__) || defined(__APPLE__)
@@ -11,8 +11,9 @@ class Type {
     public:
         Type();
         Type(std::string name, std::string color);
-        void operator<<(std::string text);
-        std::string getName();
+        bool operator==(const Type& type);
+        std::string getName() const;
+        std::string getColor() const;
         
     private:
         std::string name;
@@ -38,8 +39,9 @@ class Type {
         static void setColor(int color);
         Type();
         Type(std::string name, int color);
-        void operator<<(std::string text);
-        std::string getName();
+        bool operator==(const Type& type);
+        std::string getName() const;
+        int getColor() const;
         
     private:
         std::string name;

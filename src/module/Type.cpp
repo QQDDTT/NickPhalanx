@@ -11,9 +11,8 @@ Type::Type() : name(""), color(BLACK_) {}
 // 构造函数
 Type::Type(std::string name, std::string color) : name(name), color(color) {}
 
-// 输出函数
-void Type::operator<<(std::string text) {
-    std::cout << color << text << RESET_;
+std::string Type::getColor() const {
+    return color;
 }
 
 #endif
@@ -25,22 +24,18 @@ void Type::operator<<(std::string text) {
 // 构造函数
 Type::Type(std::string name, int color) : name(name), color(color) {}
 
-// 设置颜色
-void Type::setColor(int color) {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
-
-// 输出函数
-void Type::operator<<(std::string text) {
-    setColor(color);
-    std::cout << text;
-    setColor(RESET_);
+int Type::getColor() const {
+    return color;
 }
 
 #endif
 
+bool Type::operator==(const Type& type) {
+    return name == type.getName();
+}
+
 // 获取名称
-std::string Type::getName() {
+std::string Type::getName() const {
     return name;
 }
 

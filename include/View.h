@@ -19,4 +19,6 @@ class View {
 
 extern View view;
 
+
+
 #endif // VIEW_H

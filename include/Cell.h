@@ -15,7 +15,6 @@ class Cell {
         virtual ~Cell () = default; // 析构函数，用于释放内存
         Power& getPower();
         int showPower();
-        void printPower();
         Type& getType();
         std::string showType();
     protected:

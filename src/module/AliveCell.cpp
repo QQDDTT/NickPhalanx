@@ -24,8 +24,3 @@ void AliveCell::resetAction() {
 int AliveCell::getAction() {
     return this->action;
 }
-
-// 打印动作次数
-void AliveCell::printAction() {
-    type << std::to_string(action);
-}

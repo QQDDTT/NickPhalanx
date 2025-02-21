@@ -7,6 +7,7 @@
 #include "Phalanx.h"
 #include "AliveCell.h"
 #include "Position.h"
+#include "Control.h"
 
 Phalanx phalanx;
 
@@ -46,14 +47,21 @@ void build() {
     std::cout << "Completed" << std::endl;
 }
 
+Control redControl = Control(RED);
+Control blueControl = Control(BLUE);
+
 // 主函数
 int main() {
     std::cout << "Start" << std::endl;
 
     build();
+    for (int i = 0; i < 10; i++) {
+        redControl << phalanx;
+        blueControl << phalanx;
+        phalanx.nextStep();
+    }
 
-    view << phalanx;  // 确保 `operator<<` 处理正确
-
+    view << phalanx;
     std::cout << "End" << std::endl;
     return 0;
 }

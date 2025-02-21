@@ -14,7 +14,6 @@ class AliveCell: public Cell {
         virtual ~AliveCell() = default;
         void resetAction();
         int getAction();
-        void printAction();
     private:
         int action; // 动作次数
 };

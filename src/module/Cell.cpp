@@ -17,11 +17,6 @@ Power& Cell::getPower() {
     return power;
 }
 
-// 打印单元的能量
-void Cell::printPower() {
-    type << power.getStr();
-}
-
 // 获取单元的类型
 Type& Cell::getType() {
     return type;

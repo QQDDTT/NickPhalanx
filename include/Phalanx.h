@@ -16,7 +16,7 @@ class Phalanx {
     public:
         Phalanx();
         Phalanx(int min_x, int max_x, int min_y, int max_y);
-        Cell getCell(Position position);
+        Cell* getCell(Position position);
         void setCell(Position position, Cell* cell);
         std::unordered_map<Position, Cell*> getCells();
         int getMinX();
@@ -25,8 +25,10 @@ class Phalanx {
         int getMaxY();
         int getDistance(Position position1, Position position2);
         void nextStep();
-        void move(Position from, Position to);
-        
+        bool move(Position from, Position to);
+        bool plunder(Position from, Position to);
+        bool dedicate(Position from, Position to);
+
     private:
         Step step; // 回合数
         std::unordered_map<Position, Cell*> cells; // 储存单元的表格
