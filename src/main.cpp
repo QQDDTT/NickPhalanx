@@ -8,12 +8,13 @@
 #include "AliveCell.h"
 #include "Position.h"
 #include "Control.h"
+#include "TimeDate.h"
 
 Phalanx phalanx;
 
 // 生成初始状态
 void build() {
-    std::cout << "Building..." << std::endl;
+    std::cout << getTime() << " Building..." << std::endl;
     int x0 = 0, y0 = 0, x1 = 9, y1 = 9;
 
     phalanx = Phalanx(x0, x1, y0, y1);
@@ -52,7 +53,7 @@ Control blueControl = Control(BLUE);
 
 // 主函数
 int main() {
-    std::cout << "Start" << std::endl;
+    std::cout << getDateTime() << " Start" << std::endl;
 
     build();
     for (int i = 0; i < 10; i++) {
@@ -62,6 +63,6 @@ int main() {
     }
 
     view << phalanx;
-    std::cout << "End" << std::endl;
+    std::cout <<  getDateTime() << " End" << std::endl;
     return 0;
 }
