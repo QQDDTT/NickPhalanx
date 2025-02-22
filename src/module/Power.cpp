@@ -25,18 +25,17 @@ std::string Power::getStr() {
     return std::to_string(power);
 }
 
-// 能量运算，消耗
-void Power::operator>>(Power power) {
+// 能量运算
+void Power::operator>>(Power&other) {
     if (this->power > 0) {
-        this->power--;
-        power.power++;
+        --power;
+        ++other.power;
     }
 }
 
-// 能量运算，增加
-void Power::operator<<(Power power) {
-    if (this->power > power.power) {
-        this->power++;
-        power.power--;
+void Power::half() {
+    if (power % 2 == 1) {
+        ++power;
     }
+    power /= 2;
 }

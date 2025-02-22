@@ -20,7 +20,7 @@ class Control {
     public:
         Control(Type type);
         
-        void operator<<(Phalanx &phalanx);
+        bool operator<<(Phalanx &phalanx);
         
     private:
         Type type; // 控制的类型，表示玩家的阵营

@@ -14,8 +14,8 @@ class Position {
         int getY() const;
         int getMod();
         std::string toString() const;
-        Position operator+(Position position);
-        Position operator-(Position position);
+        Position operator+(const Position position) const;
+        Position operator-(const Position position) const;
         bool operator==(const Position& position) const;
     private:
         int x, y;
@@ -31,5 +31,10 @@ namespace std {
         }
     };
 }
+
+const extern Position UNIT_UP;
+const extern Position UNIT_DOWN;
+const extern Position UNIT_LEFT;
+const extern Position UNIT_RIGHT;
 
 #endif // POSITION_H

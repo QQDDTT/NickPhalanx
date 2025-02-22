@@ -30,12 +30,12 @@ int Position::getMod() {
 }
 
 // 定义加法
-Position Position::operator+(Position position) {
+Position Position::operator+(const Position position) const {
     return Position(x + position.getX(), y + position.getY());
 }
 
 // 定义减法
-Position Position::operator-(Position position) {
+Position Position::operator-(const Position position) const {
     return Position(x - position.getX(), y - position.getY());
 }
 
@@ -43,3 +43,9 @@ Position Position::operator-(Position position) {
 bool Position::operator==(const Position& position) const {
     return x == position.getX() && y == position.getY();
 }
+
+
+const Position UNIT_UP = Position(0, 1);
+const Position UNIT_DOWN = Position(0, -1);
+const Position UNIT_LEFT = Position(-1, 0);
+const Position UNIT_RIGHT = Position(1, 0);

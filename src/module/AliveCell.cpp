@@ -17,7 +17,24 @@ AliveCell::AliveCell(Cell&cell) : Cell(cell.getType(), cell.showPower()) {
 
 // 重置动作次数
 void AliveCell::resetAction() {
-    this->action = power.getPower();
+    if (showPower() > 50) {
+        this->action = 5;
+    } else if (showPower() > 20) {
+        this->action = 4;
+    } else if (showPower() > 10) {
+        this->action = 3;
+    } else if (showPower() > 5) {
+        this->action = 2;
+    } else {
+        this->action = 1;
+    }
+}
+
+// 减少动作次数
+void AliveCell::cutAction() {
+    if (this->action > 0) {
+        --action;
+    }
 }
 
 // 获取动作次数

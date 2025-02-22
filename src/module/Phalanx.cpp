@@ -29,9 +29,46 @@ void Phalanx::setCell(Position position, Cell* cell) {
     cells[position] = cell;
 }
 
+int Phalanx::getStep() {
+    return step.getStep();
+}
+
 // 获取所有单元
 std::unordered_map<Position, Cell*> Phalanx::getCells() {
     return cells;
+}
+
+// 获取所有活动单元
+std::unordered_map<Position, AliveCell*> Phalanx::getAliveCells() {
+    std::unordered_map<Position, AliveCell*> aliveCells;
+    for (auto& cellPair : cells) {
+        if (AliveCell* aliveCell = dynamic_cast<AliveCell*>(cellPair.second)) {
+            aliveCells[cellPair.first] = aliveCell;
+        }
+    }
+    return aliveCells;
+}
+
+// 获取相邻的单元
+std::unordered_map<Position, Cell*> Phalanx::getNeighors(Position position) {
+    std::unordered_map<Position, Cell*> neighors;
+    Position up = position + UNIT_UP;
+    Position down = position + UNIT_DOWN;
+    Position left = position + UNIT_LEFT;
+    Position right = position + UNIT_RIGHT;
+    if (cells.find(up) != cells.end()) {
+        neighors[up] = cells[up];
+    }
+    if (cells.find(down) != cells.end()) {
+        neighors[down] = cells[down];
+    }
+    if (cells.find(left) != cells.end()) {
+        neighors[left] = cells[left];
+    }
+    if (cells.find(right) != cells.end()) {
+        neighors[right] = cells[right];
+    }
+    return neighors;
 }
 
 // 获取二元空间的边界
@@ -55,7 +92,7 @@ void Phalanx::nextStep() {
     }
 }
 
-// 细胞移动
+// 移动
 bool Phalanx::move(Position from, Position to) {
     auto itFrom = cells.find(from);
     auto itTo = cells.find(to);
@@ -68,6 +105,7 @@ bool Phalanx::move(Position from, Position to) {
         if (itTo->second == &DEF) {
             cells[to] = aliveCell;
             cells.erase(itFrom);
+            std::cout << "Move from " << from.toString() << " to " << to.toString() << std::endl;
             return true;
         }
     }
@@ -83,11 +121,13 @@ bool Phalanx::plunder(Position from, Position to) {
     }
 
     if (AliveCell* aliveCell = dynamic_cast<AliveCell*>(itFrom->second)) {
-        if (aliveCell->showPower() > itTo->second->showPower()) {
-            aliveCell->getPower() << itTo->second->getPower();
+        aliveCell->getAction();
+        if (aliveCell->showPower() > itTo->second->showPower() && itTo->second->showPower() > 0) {
+            itTo->second->getPower() >> aliveCell->getPower();
             if (itTo->second->showPower() == 0) {
                 itTo->second = &DEF;
             }
+            std::cout << "Plunder from " << from.toString() << " to " << to.toString() << std::endl;
             return true;
         }
     }
@@ -107,7 +147,28 @@ bool Phalanx::dedicate(Position from, Position to) {
         if (aliveCell->showPower() == 0) {
             itFrom->second = &DEF;
         }
+        std::cout << "Dedicate from " << from.toString() << " to " << to.toString() << std::endl;
         return true;
+    }
+    return false;
+}
+
+// 复制
+bool Phalanx::copy(Position from, Position to) {
+    auto itFrom = cells.find(from);
+    auto itTo = cells.find(to);
+    if (itFrom == cells.end() || itTo == cells.end()) {
+        return false;
+    }
+
+    if (AliveCell* aliveCell = dynamic_cast<AliveCell*>(itFrom->second)) {
+        if (itTo->second->showPower() == 0 && aliveCell->showPower() >= 10) {
+            Cell* newCell = new AliveCell(aliveCell->getType(), aliveCell->showPower() / 2);
+            cells[to] = new AliveCell(*newCell);
+            aliveCell->getPower().half();
+            std::cout << "Copy from " << from.toString() << " to " << to.toString() << std::endl;
+            return true;
+        }
     }
     return false;
 }

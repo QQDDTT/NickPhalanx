@@ -13,8 +13,8 @@ class Power {
         Power(int power);
         int getPower();
         std::string getStr();
-        void operator>>(Power power);
-        void operator<<(Power power);
+        void operator>>(Power&other);
+        void half();
     private:
         int power;
 };

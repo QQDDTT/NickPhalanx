@@ -13,6 +13,7 @@ class AliveCell: public Cell {
         AliveCell(Cell& cell);
         virtual ~AliveCell() = default;
         void resetAction();
+        void cutAction();
         int getAction();
     private:
         int action; // 动作次数

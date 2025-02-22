@@ -7,9 +7,11 @@ NickPhalanx 是一个[玩家自行编辑逻辑，进行数字博弈游戏]的项
 单元 Cell， AliveCell 模型的最小单位
 环境类 Phalanx 储存模型主体
 工具类 View 实现控制台输出
-控制类 Control 向模型导入逻辑（构建中）
+控制类 Control 向模型导入逻辑,[目前随机动作，无逻辑]
 
-模型动态的机能尚处于设计阶段，在环境类（Palanx）中声明相关函数（move，plunder...），
+模型动态的机能，在环境类（Palanx）中声明相关函数（move，plunder，dedicate, copy）
+
+异常监控机制，构建中...
 
 ## 主要特性
 - [特性 1] 支持跨平台运行

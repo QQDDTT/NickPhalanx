@@ -11,6 +11,8 @@
 #include "TimeDate.h"
 
 Phalanx phalanx;
+Control redControl = Control(RED);
+Control blueControl = Control(BLUE);
 
 // 生成初始状态
 void build() {
@@ -26,13 +28,16 @@ void build() {
     for (int x = x0; x <= x1; x++) {
         for (int y = x + 1; y <= y1; y++) {
             int randVal = dist(gen);  // 生成随机数
-            std::unique_ptr<Cell> cell = std::make_unique<Cell>(WHITE, randVal);
 
-            phalanx.setCell(Position(x, y), cell.get());
-            phalanx.setCell(Position(y, x), cell.get());
+            std::unique_ptr<Cell> cell_1 = std::make_unique<Cell>(WHITE, randVal);
+            std::unique_ptr<Cell> cell_2 = std::make_unique<Cell>(WHITE, randVal);
+
+            phalanx.setCell(Position(x, y), cell_1.get());
+            phalanx.setCell(Position(y, x), cell_2.get());
 
             // 由于 cell 是智能指针，必须手动释放管理
-            cell.release();
+            cell_1.release();
+            cell_2.release();
         }
     }
 
@@ -48,18 +53,26 @@ void build() {
     std::cout << "Completed" << std::endl;
 }
 
-Control redControl = Control(RED);
-Control blueControl = Control(BLUE);
-
 // 主函数
 int main() {
     std::cout << getDateTime() << " Start" << std::endl;
 
     build();
-    for (int i = 0; i < 10; i++) {
-        redControl << phalanx;
-        blueControl << phalanx;
+
+    view << phalanx;
+
+    for (int i = 0; i < 100; i++) {
+        std::cout << getDateTime() << " Step " << phalanx.getStep() << std::endl;
+        std::cout << "Please enter to continue..." << std::endl;
         phalanx.nextStep();
+        // std::cin.get();
+        if (!(redControl << phalanx)) {
+            break;
+        }
+        if (!(blueControl << phalanx)) {
+            break;
+        }
+        view << phalanx;
     }
 
     view << phalanx;
