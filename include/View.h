@@ -14,7 +14,6 @@ class View {
         View();
         void operator<<(Phalanx& phalanx);
         void operator<<(Cell& cell);
-        void operator<<(Position& position);
 };
 
 extern View view;

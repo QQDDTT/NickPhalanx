@@ -104,7 +104,7 @@ bool Phalanx::move(Position from, Position to) {
     if (AliveCell* aliveCell = dynamic_cast<AliveCell*>(itFrom->second)) {
         if (itTo->second == &DEF) {
             cells[to] = aliveCell;
-            cells.erase(itFrom);
+            cells[from] = &DEF;
             std::cout << "Move from " << from.toString() << " to " << to.toString() << std::endl;
             return true;
         }
@@ -125,7 +125,7 @@ bool Phalanx::plunder(Position from, Position to) {
         if (aliveCell->showPower() > itTo->second->showPower() && itTo->second->showPower() > 0) {
             itTo->second->getPower() >> aliveCell->getPower();
             if (itTo->second->showPower() == 0) {
-                itTo->second = &DEF;
+                cells[to] = &DEF;
             }
             std::cout << "Plunder from " << from.toString() << " to " << to.toString() << std::endl;
             return true;
@@ -145,7 +145,7 @@ bool Phalanx::dedicate(Position from, Position to) {
     if (AliveCell* aliveCell = dynamic_cast<AliveCell*>(itFrom->second)) {
         aliveCell->getPower() >> itTo->second->getPower();
         if (aliveCell->showPower() == 0) {
-            itFrom->second = &DEF;
+            cells[from] = &DEF;
         }
         std::cout << "Dedicate from " << from.toString() << " to " << to.toString() << std::endl;
         return true;

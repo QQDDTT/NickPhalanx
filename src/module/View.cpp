@@ -21,15 +21,6 @@ void View::operator<<(Phalanx& phalanx) {
         }
         std::cout << std::endl;
     }
-
-    std::cout << "ActionList: " << std::endl;
-    std::unordered_map<Position, Cell*> cells = phalanx.getCells();
-    for (auto& cellPair : cells) {
-        if (auto* aliveCell = dynamic_cast<AliveCell*>(cellPair.second)) {
-            std::cout << aliveCell->getType().getColor() << "Found AliveCell at " << cellPair.first.toString();
-            std::cout << " Action: " << aliveCell->getAction() << RESET_  << std::endl;
-        }
-    }
 }
 
 #endif
@@ -64,9 +55,5 @@ void View::operator<<(Cell& cell) {
     std::cout << "Power: " << cell.getPower().getStr();
 }
 
-// 输出位置的信息
-void View::operator<<(Position& position) {
-    std::cout << position.toString() << std::endl;
-}
 
 View view = View();

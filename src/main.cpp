@@ -50,21 +50,21 @@ void build() {
     phalanx.setCell(Position(x1, y0), blueCell.get());
     blueCell.release();
 
+    view << phalanx;
     std::cout << "Completed" << std::endl;
 }
 
-// 主函数
-int main() {
-    std::cout << getDateTime() << " Start" << std::endl;
-
-    build();
-
-    view << phalanx;
-
-    for (int i = 0; i < 100; i++) {
-        std::cout << getDateTime() << " Step " << phalanx.getStep() << std::endl;
-        std::cout << "Please enter to continue..." << std::endl;
+// 循环
+void loop(int count) {
+    if (count <= 0) {
+        std::cout << "Countv cannot be less than 0" << std::endl;
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        std::cout << std::endl;
+        std::cout << ">>>>>>>>>>" << getDateTime() << " Step " << phalanx.getStep() << "<<<<<<<<<<" << std::endl;
         phalanx.nextStep();
+        // std::cout << "Please enter to continue..." << std::endl;
         // std::cin.get();
         if (!(redControl << phalanx)) {
             break;
@@ -74,8 +74,35 @@ int main() {
         }
         view << phalanx;
     }
+}
 
-    view << phalanx;
+void ruling() {
+    int redCount = 0, blueCount = 0;
+    for (auto& cellPair : phalanx.getAliveCells()) {
+        if (cellPair.second->getType() == RED) {
+            redCount++;
+        } else if (cellPair.second->getType() == BLUE) {
+            blueCount++;
+        }
+    }
+    std::cout << "Red: " << redCount << ", Blue: " << blueCount << std::endl;
+    if (redCount > blueCount) {
+        std::cout << "Red win" << std::endl;
+    } else if (redCount < blueCount) {
+        std::cout << "Blue win" << std::endl;
+    }
+}
+
+// 主函数
+int main() {
+    std::cout << "=================================================" << std::endl;
+    std::cout << getDateTime() << " Start" << std::endl;
+
+    build();
+    loop(1000);
+    ruling();
+
     std::cout <<  getDateTime() << " End" << std::endl;
+    std::cout << "=================================================" << std::endl;
     return 0;
 }
