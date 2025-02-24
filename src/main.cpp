@@ -11,8 +11,8 @@
 #include "TimeDate.h"
 
 Phalanx phalanx;
-Control redControl = Control(RED);
-Control blueControl = Control(BLUE);
+Control redControl;
+Control blueControl;
 
 // 生成初始状态
 void build() {
@@ -40,6 +40,9 @@ void build() {
             cell_2.release();
         }
     }
+
+    redControl = Control(RED);
+    blueControl = Control(BLUE);
 
     // 创建红色和蓝色活动单元
     std::unique_ptr<Cell> redCell = std::make_unique<AliveCell>(RED, 10);
@@ -83,6 +86,8 @@ void ruling() {
             redCount++;
         } else if (cellPair.second->getType() == BLUE) {
             blueCount++;
+        } else {
+            std::cout << "" << std::endl;
         }
     }
     std::cout << "Red: " << redCount << ", Blue: " << blueCount << std::endl;

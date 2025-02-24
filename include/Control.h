@@ -18,6 +18,7 @@
 
 class Control {
     public:
+        Control();
         Control(Type type);
         
         bool operator<<(Phalanx &phalanx);

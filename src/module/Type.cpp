@@ -39,7 +39,7 @@ std::string Type::getName() const {
     return name;
 }
 
-Type BLACK = Type("DEF", BLACK_);
-Type WHITE = Type("ALIVE", WHITE_);
+Type BLACK = Type("BLACK", BLACK_);
+Type WHITE = Type("WHITE", WHITE_);
 Type RED = Type("RED", RED_);
 Type BLUE = Type("BLUE", BLUE_);

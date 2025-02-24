@@ -2,9 +2,10 @@
 #include "Phalanx.h"
 #include "Position.h"
 
+Control::Control() : type(BLACK) {}
 
 // 构造函数
-Control::Control(Type type) : type(type) {}
+Control::Control(Type t) : type(t) {}
 
 // 导入活动单元
 bool Control::operator<<(Phalanx &phalanx) {
@@ -62,7 +63,7 @@ bool Control::operator<<(Phalanx &phalanx) {
                     phalanx.copy(cellPair.first, cellPair.first + UNIT_RIGHT);
                     break;
                 default:
-                    std::cout << "Waiting..." << std::endl;
+                    std::cout << cellPair.first.toString() << "Waiting..." << std::endl;
                     break;
                 }
             }
