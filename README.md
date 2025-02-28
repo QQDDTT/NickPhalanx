@@ -1,7 +1,7 @@
 # NickPhalanx
 
 ## 项目说明
-NickPhalanx 是一个[玩家自行编辑逻辑，进行数字博弈游戏]的项目。
+NickPhalanx 是一个[二维空间数字博弈游戏]的项目。
  - 静态构架
  基础元素 Power， Type， Position， Step  用于反映模型的状态
  单元 Cell， AliveCell 模型的最小单位
