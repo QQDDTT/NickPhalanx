@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # 包含头文件目录
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-
 # 查找 src 目录下的所有 .cpp 文件
 file(GLOB SOURCES
     "src/module/*.cpp"
@@ -24,4 +23,3 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # 定义项目根目录路径
 add_definitions(-DPROJECT_ROOT="${CMAKE_SOURCE_DIR}")
-

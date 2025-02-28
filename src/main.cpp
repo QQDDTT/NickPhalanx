@@ -9,6 +9,7 @@
 #include "Position.h"
 #include "Control.h"
 #include "TimeDate.h"
+#include "Type.h"
 
 Phalanx phalanx;
 Control redControl;

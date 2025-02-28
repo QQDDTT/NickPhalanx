@@ -23,11 +23,11 @@ NickPhalanx 是一个[玩家自行编辑逻辑，进行数字博弈游戏]的项
  流程 3[根据设计的接口，制作简单的测试脚本]
  流程 4[根据设计的接口，设计和制作脚本文件的解释器]
  流程 5[测试解释器，并添加必要的提示信息]
- 流程 6[在现有框架，完善该模块]
+ 流程 6[调试，修正]
 
 ## 主要特性
 - [特性 1] 支持跨平台运行
-- [特性 2] 
+- [特性 2] 支持 JavaScript 注入
 - [特性 3]
 
 ## 安装方法
@@ -35,16 +35,19 @@ NickPhalanx 是一个[玩家自行编辑逻辑，进行数字博弈游戏]的项
  - 下载Github仓库
 git clone https://github.com/QQDDTT/NickPhalanx.git
 
+
 ## 注意，若未安装 Virtual Studio ， 请自行下载 MinGW 和 CMake
 
  - 本地安装MinGW
- Windows : https://github.com/niXman/mingw-builds-binaries/releases
- Linux : sudo apt install mingw-w64
+ Windows
+    https://github.com/niXman/mingw-builds-binaries/releases
+ Linux
+    sudo apt install mingw-w64
 
  - 本地安装CMake
- Windows : https://cmake.org/download/
- Linux : sudo apt install cmake
+ Windows
+    https://cmake.org/download/
+ Linux
+    sudo apt install cmake
 
- - 配置环境变量
- 在环境变量中添加 MinGW 和 CMake 文件夹下的 bin 文件夹的路径
 
